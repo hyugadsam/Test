@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BDConection.Dto.Response" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BDConection.Dto.Response" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:19190/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" />
+  <xs:complexType name="isValidResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BasicResponse">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" minOccurs="0" name="UserInfo" nillable="true" type="q1:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="isValidResponse" nillable="true" type="tns:isValidResponse" />
+  <xs:complexType name="BasicResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isSaved" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicResponse" nillable="true" type="tns:BasicResponse" />
+  <xs:complexType name="GetUsersResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BasicResponse">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" minOccurs="0" name="Users" nillable="true" type="q2:ArrayOfUser" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUsersResponse" nillable="true" type="tns:GetUsersResponse" />
+  <xs:complexType name="GetPaySheetsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BasicResponse">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" minOccurs="0" name="paySheets" nillable="true" type="q3:ArrayOfPaySheet" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPaySheetsResponse" nillable="true" type="tns:GetPaySheetsResponse" />
+</xs:schema>

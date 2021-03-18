@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BDConection.Dto.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BreakFast" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FirstLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Roleid" type="xs:int" />
+      <xs:element minOccurs="0" name="Salary" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Savings" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SecondLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Userid" type="xs:int" />
+      <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfPaySheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaySheet" nillable="true" type="tns:PaySheet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaySheet" nillable="true" type="tns:ArrayOfPaySheet" />
+  <xs:complexType name="PaySheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BreakFast" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Deposit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Paysheetid" type="xs:int" />
+      <xs:element minOccurs="0" name="Salary" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Savings" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SecondLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Userid" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaySheet" nillable="true" type="tns:PaySheet" />
+</xs:schema>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TempBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="st_GetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="st_isUserValid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="UserLogin" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="St_SaveUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="Userid" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SecondLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="InsertDate" Type="datetime" Mode="In" />
+          <Parameter Name="Salary" Type="decimal" Mode="In" />
+          <Parameter Name="BreakFast" Type="decimal" Mode="In" />
+          <Parameter Name="Savings" Type="decimal" Mode="In" />
+          <Parameter Name="isActive" Type="bit" Mode="In" />
+          <Parameter Name="Roleid" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserLogin" Type="nvarchar" Mode="In" />
+          <Parameter Name="HasError" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="st_GeneratePaysheets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Finance">
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="st_GetPaysheetByid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Finance">
+          <Parameter Name="Paysheetid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="st_GetPaysheets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Finance">
+          <Parameter Name="Userid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TempBDModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TempBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TempBDEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="st_GetUsers1" ReturnType="Collection(TempBDModel.st_GetUsers1_Result)" />
+          <FunctionImport Name="st_isUserValid1" ReturnType="Collection(TempBDModel.st_isUserValid1_Result)">
+          <Parameter Name="UserLogin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="St_SaveUser1">
+            <Parameter Name="Userid" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="FirstLastName" Mode="In" Type="String" />
+            <Parameter Name="SecondLastName" Mode="In" Type="String" />
+            <Parameter Name="InsertDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Salary" Mode="In" Type="Decimal" />
+            <Parameter Name="BreakFast" Mode="In" Type="Decimal" />
+            <Parameter Name="Savings" Mode="In" Type="Decimal" />
+            <Parameter Name="isActive" Mode="In" Type="Boolean" />
+            <Parameter Name="Roleid" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="UserLogin" Mode="In" Type="String" />
+            <Parameter Name="HasError" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="st_GeneratePaysheets">
+          <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="st_GetPaysheets" ReturnType="Collection(TempBDModel.st_GetPaysheets_Result)">
+          <Parameter Name="Userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="st_GetPaysheetByid" ReturnType="Collection(TempBDModel.st_GetPaysheetByid_Result)">
+            <Parameter Name="Paysheetid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="st_GetUsers1_Result">
+          <Property Type="Int32" Name="Userid" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SecondLastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Salary" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="BreakFast" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Savings" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="isActive" Nullable="false" />
+          <Property Type="Int32" Name="Roleid" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="UserLogin" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="st_isUserValid1_Result">
+          <Property Type="Int32" Name="Userid" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SecondLastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Salary" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="BreakFast" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Savings" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="isActive" Nullable="false" />
+          <Property Type="Int32" Name="Roleid" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="UserLogin" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="st_GetPaysheets_Result">
+          <Property Type="Int32" Name="Paysheetid" Nullable="false" />
+          <Property Type="Int32" Name="Userid" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SecondLastName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="BreakFast" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Savings" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Deposit" Nullable="true" Precision="12" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="st_GetPaysheetByid_Result">
+          <Property Type="Int32" Name="Paysheetid" Nullable="false" />
+          <Property Type="Int32" Name="Userid" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SecondLastName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Salary" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="BreakFast" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Savings" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Deposit" Nullable="true" Precision="12" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TempBDModelStoreContainer" CdmEntityContainer="TempBDEntities" >
+          <FunctionImportMapping FunctionImportName="st_GetUsers1" FunctionName="TempBDModel.Store.st_GetUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TempBDModel.st_GetUsers1_Result">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="BreakFast" ColumnName="BreakFast" />
+                <ScalarProperty Name="Savings" ColumnName="Savings" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_isUserValid1" FunctionName="TempBDModel.Store.st_isUserValid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TempBDModel.st_isUserValid1_Result">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="BreakFast" ColumnName="BreakFast" />
+                <ScalarProperty Name="Savings" ColumnName="Savings" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="St_SaveUser1" FunctionName="TempBDModel.Store.St_SaveUser" />
+          <FunctionImportMapping FunctionImportName="st_GeneratePaysheets" FunctionName="TempBDModel.Store.st_GeneratePaysheets" />
+          <FunctionImportMapping FunctionImportName="st_GetPaysheets" FunctionName="TempBDModel.Store.st_GetPaysheets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TempBDModel.st_GetPaysheets_Result">
+                <ScalarProperty Name="Paysheetid" ColumnName="Paysheetid" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="BreakFast" ColumnName="BreakFast" />
+                <ScalarProperty Name="Savings" ColumnName="Savings" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_GetPaysheetByid" FunctionName="TempBDModel.Store.st_GetPaysheetByid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TempBDModel.st_GetPaysheetByid_Result">
+                <ScalarProperty Name="Paysheetid" ColumnName="Paysheetid" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="BreakFast" ColumnName="BreakFast" />
+                <ScalarProperty Name="Savings" ColumnName="Savings" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
